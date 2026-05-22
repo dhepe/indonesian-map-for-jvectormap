@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peta Digital Indonesia</title>
+    <!-- Hubungkan ke CSS jVectorMap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jvectormap-next@3.2.0/jquery-jvectormap.min.css">
+    
+    <style>
+        /* Desain kontainer peta */
+        #indonesia-map {
+            width: 100%;
+            height: 600px;
+            background-color: #e0f2fe; /* Warna latar belakang peta (laut/luar) */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Kontainer Peta -->
+    <div id="indonesia-map"></div>
+
+    <!-- Panggil jQuery dan jVectorMap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jvectormap-next@3.2.0/jquery-jvectormap.min.js"></script>
+    <!-- Ganti url ini dengan file lokal map indonesia Anda jika tidak menggunakan CDN -->
+    <script src="indonesia.js"></script>
+
+    <script>
+        $(function(){
+            $('#indonesia-map').vectorMap({
+                map: 'indonesia', // Sesuaikan dengan nama map di dalam file indonesia.js Anda (misal: 'id_mill' atau 'indonesia_en')
+                backgroundColor: '#e0f2fe', // Warna laut biru muda flat
+                zoomOnScroll: true,
+                
+                // Kontrol Warna Wilayah Indonesia
+                regionStyle: {
+                    initial: {
+                        fill: '#4CAF50', // Hijau untuk daratan Indonesia
+                        "fill-opacity": 1,
+                        stroke: '#f8fafc', // Garis batas provinsi putih tipis
+                        "stroke-width": 0.5,
+                        "stroke-opacity": 1
+                    },
+                    hover: {
+                        fill: '#2563eb', // Biru saat cursor diarahkan ke provinsi
+                        "fill-opacity": 0.8
+                    }
+                },
+
+            });
+        });
+    </script>
+</body>
+</html>
